@@ -2,8 +2,7 @@ const express = require("express");
 const app = express();
 const cors = require("cors");
 var bodyParser = require('body-parser')
-require("dotenv").config({ path: "../config.env" });
-const port = process.env.PORT || 3000;
+require("dotenv").config({ path: "../config.env" }); 
 app.use(cors());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(express.json());
@@ -20,11 +19,11 @@ app.all('*', function(req, res, next) {
   next();
 });
 
+const port= 3000
 app.listen(port, () => {
   // perform a database connection when server starts
   dbo.connectToServer(function (err) {
     if (err) console.error(err);
- 
   });
   console.log(`Server is running on port: ${port}`);
 });
