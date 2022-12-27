@@ -2,14 +2,14 @@ const express = require("express");
 const app = express();
 const cors = require("cors");
 var bodyParser = require('body-parser')
-require("dotenv").config({ path: "../config.env" }); 
+require("dotenv").config({ path: "./config.env" }); 
 app.use(cors());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(express.json());
 app.use(bodyParser.json());
-app.use(require("./routes/route"));
+app.use(require("./server/routes/route"));
 // get driver connection
-const dbo = require("./db/conn");
+const dbo = require("./server/db/conn");
 
 
 app.all('*', function(req, res, next) {
